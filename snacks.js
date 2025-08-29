@@ -7,6 +7,10 @@ function getInitials(name) {
     return initials;
 }
 
+function createSlug(string) {
+    return string.toLowerCase();
+}
+
 module.exports = {
-    getInitials
+    getInitials, createSlug
 };
