@@ -15,6 +15,12 @@ function average(arrayNums) {
     return arrayNums.reduce((acc, num) => acc + num, 0) / arrayNums.length;
 }
 
+function isPalindrome(string) {
+    let reserveString = string.trim().split('').reverse().join('').toLowerCase();
+    return reserveString === string.toLowerCase().trim();
+}
+
+
 module.exports = {
-    getInitials, createSlug, average
+    getInitials, createSlug, average, isPalindrome
 };
