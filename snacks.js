@@ -11,6 +11,10 @@ function createSlug(string) {
     return string.toLowerCase();
 }
 
+function average(arrayNums) {
+    return arrayNums.reduce((acc, num) => acc + num, 0) / arrayNums.length;
+}
+
 module.exports = {
-    getInitials, createSlug
+    getInitials, createSlug, average
 };
