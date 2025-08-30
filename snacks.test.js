@@ -74,3 +74,9 @@ test('Dopo aver rimosso un post con la funzione removePost, l\'array posts deve 
     removePost(arrayPosts, 2);
     expect(arrayPosts).toHaveLength(2);
 });
+
+// Snack 9
+test('Se si tenta di aggiungere un post con un id o uno slug già esistente, la funzione addPost deve lanciare un errore.', () => {
+    expect(() => { addPost(arrayPosts, { id: 1, title: 'Post Extra', slug: 'post-extra' },); }).toThrow('Id già esistente');
+    expect(() => { addPost(arrayPosts, { id: 4, title: 'Post 4', slug: 'post-1' },); }).toThrow('Slug già esistente');
+});
