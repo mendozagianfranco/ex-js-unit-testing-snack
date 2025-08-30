@@ -23,7 +23,18 @@ function isPalindrome(string) {
     return reserveString === string.toLowerCase().trim();
 }
 
+function findPostById(arrayPosts, id) {
+    if (isNaN(id)) {
+        throw new Error('ID non è numerico');
+    }
+    arrayPosts.forEach(p => {
+        if (p.id === undefined || p.title === undefined || p.slug === undefined) {
+            throw new Error('Array di Post non valido');
+        }
+    });
+    return arrayPosts.find(p => p.id === id) || null;
+}
 
 module.exports = {
-    getInitials, createSlug, average, isPalindrome
+    getInitials, createSlug, average, isPalindrome, findPostById
 };
