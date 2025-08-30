@@ -1,4 +1,4 @@
-const { getInitials, createSlug, average, isPalindrome, findPostById } = require('./snacks');
+const { getInitials, createSlug, average, isPalindrome, findPostById, addPost, removePost } = require('./snacks');
 
 
 describe('Generazione Slug', () => {
@@ -44,14 +44,16 @@ test('La funzione isPalindrome verifica se una stringa è un palindromo.', () =>
     expect(isPalindrome('anna  ')).toBeTruthy();
 });
 
+let arrayPosts;
 
+beforeEach(() => {
+    arrayPosts = [
+        { id: 1, title: 'Post 1', slug: 'post-1' },
+        { id: 2, title: 'Post 2', slug: 'post-2' },
+        { id: 3, title: 'Post 3', slug: 'post-3' },
+    ];
+});
 
-const arrayPosts = [
-    { id: 1, title: 'Post 1', slug: 'post-1' },
-    { id: 2, title: 'Post 2', slug: 'post-2' },
-    { id: 3, title: 'Post 3', slug: 'post-3' },
-
-];
 
 // Snack 7
 test('La funzione findPostById restituisce il post corretto dato l\'array di post e l\'id', () => {
@@ -60,4 +62,15 @@ test('La funzione findPostById restituisce il post corretto dato l\'array di pos
     expect(findPostById(arrayPosts, 100)).toBe(null);
     expect(() => { findPostById([1, 2, 3, 4,], 2); }).toThrow();
 
+});
+
+// Snack 8 (BONUS)
+test('Dopo aver aggiunto un post con la funzione addPost, l\'array posts deve contenere un elemento in più', () => {
+    addPost(arrayPosts, { id: 4, title: 'Post 4', slug: 'post-4' });
+    expect(arrayPosts).toHaveLength(4);
+});
+
+test('Dopo aver rimosso un post con la funzione removePost, l\'array posts deve contenere un elemento in meno.', () => {
+    removePost(arrayPosts, 2);
+    expect(arrayPosts).toHaveLength(2);
 });
