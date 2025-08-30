@@ -1,5 +1,25 @@
 const { getInitials, createSlug, average, isPalindrome, findPostById } = require('./snacks');
 
+
+describe('Generazione Slug', () => {
+    // Snack 2
+    test('La funzione createSlug restituisce una stringa in lowercase.', () => {
+        expect(createSlug('JavaScript Testing Jest')).toBe('javascript-testing-jest');
+    });
+
+    // Snack 4
+    test('La funzione createSlug sostituisce gli spazi con -.', () => {
+        expect(createSlug('Questo è un test')).toBe('questo-è-un-test');
+    });
+
+    // Snack 6
+    test('La funzione createSlug lancia un errore se il titolo è vuoto o non valido.', () => {
+        expect(() => createSlug('')).toThrow();
+        expect(() => createSlug(null)).toThrow();
+    });
+});
+
+
 // Snack 1
 test('La funzione getInitials restituisce le iniziali di un nome completo.', () => {
     expect(getInitials('Gianfranco Mendoza')).toBe('GM');
@@ -8,10 +28,6 @@ test('La funzione getInitials restituisce le iniziali di un nome completo.', () 
 
 });
 
-// Snack 2
-test('La funzione createSlug restituisce una stringa in lowercase.', () => {
-    expect(createSlug('JavaScript Testing Jest')).toBe('javascript-testing-jest');
-});
 
 // Snack 3
 test('La funzione average calcola la media aritmetica di un array di numeri.', () => {
@@ -19,10 +35,6 @@ test('La funzione average calcola la media aritmetica di un array di numeri.', (
     expect(average([15, 5])).toBe(10);
 });
 
-// Snack 4
-test('La funzione createSlug sostituisce gli spazi con -.', () => {
-    expect(createSlug('Questo è un test')).toBe('questo-è-un-test');
-});
 
 // Snack 5 
 test('La funzione isPalindrome verifica se una stringa è un palindromo.', () => {
@@ -32,11 +44,7 @@ test('La funzione isPalindrome verifica se una stringa è un palindromo.', () =>
     expect(isPalindrome('anna  ')).toBeTruthy();
 });
 
-// Snack 6
-test('La funzione createSlug lancia un errore se il titolo è vuoto o non valido.', () => {
-    expect(() => createSlug('')).toThrow();
-    expect(() => createSlug(null)).toThrow();
-});
+
 
 const arrayPosts = [
     { id: 1, title: 'Post 1', slug: 'post-1' },
