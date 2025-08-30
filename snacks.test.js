@@ -31,3 +31,9 @@ test('La funzione isPalindrome verifica se una stringa è un palindromo.', () =>
     expect(isPalindrome('casa')).toBeFalsy();
     expect(isPalindrome('anna  ')).toBeTruthy();
 });
+
+// Snack 6
+test('La funzione createSlug lancia un errore se il titolo è vuoto o non valido.', () => {
+    expect(() => createSlug('')).toThrow();
+    expect(() => createSlug(null)).toThrow();
+});
